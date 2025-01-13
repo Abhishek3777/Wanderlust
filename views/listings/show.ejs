@@ -2,35 +2,42 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wanderlust</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderLust</title>
 </head>
+<% layout("/layouts/boilerplate") %>
+    <div class="row mt-3">
+        <div class="col-8 offset-3">
 
-<body>
-  <h3>Listing Details :</h3>
-  <ul>
-    <li>
-      <%= listing.title %>
-    </li>
-    <li>
-      <%= listing.description %>
-    </li>
-    <li>&#8377; <%= listing.price.toLocaleString("en-IN") %>
-    </li>
-    <li>
-      <%= listing.location %>
-    </li>
-    <li>
-      <%= listing.country %>
-    </li>
-  </ul>
-  <br />
-  <a href="/listings/<%=listing._id%>/edit">Edit this listing</a>
-  <br><br>
-  <form method="post" action="/listings/<%=listing._id%>?_method=DELETE">
-    <button>Delete this Listing</button>
-  </form>
-</body>
 
-</html>
+            <h3>Listing Details : </h3>
+        </div>
+
+        <div class="card col-6 offset-3 show-card">
+            <img src="<%= listing.image ? listing.image.url : 'https://media.istockphoto.com/id/535168027/photo/india-goa-palolem-beach.jpg?s=612x612&w=0&k=20&c=iGV1Ue0Efj87dQirWnUpZVG1dNobUjfVvMGdKHTJ7Qg=' %>" class="card-img-top show-img" alt="listing_image" />
+            <div class="card-body">
+                <p class="card-text">
+
+                    <b>
+                        <%= listing.title %> <br>
+                    </b>
+                    <%= listing.description %> <br>
+                        <%= listing.price.toLocaleString("en-IN") %> <br>
+                            <%= listing.location%> <br>
+                                <%= listing.country%>
+                </p>
+            </div>
+        </div>
+        <br>
+
+    </div>
+    <div class="btns">
+        <a href="/listings/<%=listing._id%>/edit"><button class="btn btn-dark add-btn  offset-3">Edit </button></a>
+
+
+
+        <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
+            <button class="btn btn-dark offset-5">Delete </button>
+        </form>
+    </div>
